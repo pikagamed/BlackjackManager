@@ -36,20 +36,20 @@ public class BlackjackManager : MonoBehaviour
 
         //玩家發第一張牌
         draw = Deck[Random.Range(0, Deck.Count)];
-        playerCards.Add(new Card(draw % 13 + 1, -8, 0, 0F, true, images[draw], images[cover], "PlayerCard0"));
+        playerCards.Add(new Card(draw % 13 + 1, -7, 0, 0F, true, images[draw], images[cover], "PlayerCard0"));
         Deck.Remove(draw);
         //莊家發第一張牌
         draw = Deck[Random.Range(0, Deck.Count)];
-        dealerCards.Add(new Card(draw % 13 + 1, 8, 0, 0F, true, images[draw], images[cover], "DealerCard0"));
+        dealerCards.Add(new Card(draw % 13 + 1, 7, 0, 0F, true, images[draw], images[cover], "DealerCard0"));
         Deck.Remove(draw);
 
         //玩家發第二張牌
         draw = Deck[Random.Range(0, Deck.Count)];
-        playerCards.Add(new Card(draw % 13 + 1, -7, 0, -0.1F, true, images[draw], images[cover], "PlayerCard1"));
+        playerCards.Add(new Card(draw % 13 + 1, -6, 0, -0.1F, true, images[draw], images[cover], "PlayerCard1"));
         Deck.Remove(draw);
         //莊家發第二張牌
         draw = Deck[Random.Range(0, Deck.Count)];
-        dealerCards.Add(new Card(draw % 13 + 1, 7, 0, 0.1F, false, images[draw], images[cover], "DealerCard1"));
+        dealerCards.Add(new Card(draw % 13 + 1, 6, 0, 0.1F, false, images[draw], images[cover], "DealerCard1"));
         Deck.Remove(draw);
 
         CountPlayerPoint();
@@ -123,7 +123,7 @@ public class BlackjackManager : MonoBehaviour
             }
             if(dealerCount==11 && dealerHaveAce)
             {
-                dealerCards[1].CardOpen(7, 0, -0.1F);
+                dealerCards[1].CardOpen(6, 0, -0.1F);
             }
         }
 
@@ -172,7 +172,7 @@ public class BlackjackManager : MonoBehaviour
         int draw;
 
         draw = Deck[Random.Range(0, Deck.Count)];
-        playerCards.Add(new Card(draw % 13 + 1, -8+cardCount, 0, -0.1F* cardCount, true, images[draw], images[cover], "PlayerCard"+cardCount.ToString() ));
+        playerCards.Add(new Card(draw % 13 + 1, -7F+cardCount, 0, -0.1F* cardCount, true, images[draw], images[cover], "PlayerCard"+cardCount.ToString() ));
         Deck.Remove(draw);
 
         CountPlayerPoint();
@@ -185,7 +185,7 @@ public class BlackjackManager : MonoBehaviour
         int draw;
 
         draw = Deck[Random.Range(0, Deck.Count)];
-        dealerCards.Add(new Card(draw % 13 + 1, 8 - cardCount, 0, -0.1F * cardCount, true, images[draw], images[cover], "DealerCard" + cardCount.ToString()));
+        dealerCards.Add(new Card(draw % 13 + 1, 7 - cardCount, 0, -0.1F * cardCount, true, images[draw], images[cover], "DealerCard" + cardCount.ToString()));
         Deck.Remove(draw);
 
         CountDealerPoint();
@@ -272,7 +272,7 @@ public class BlackjackManager : MonoBehaviour
             else if(instruction && Input.GetKeyDown(KeyCode.DownArrow))
             {
                 instruction = false;
-                dealerCards[1].CardOpen(7, 0, -0.1F);
+                dealerCards[1].CardOpen(6, 0, -0.1F);
                 CountDealerPoint();
                 StartCoroutine(DealerDelayHit());
             }
@@ -283,7 +283,7 @@ public class BlackjackManager : MonoBehaviour
                 if(playerCount==21)
                 {
                     instruction = false;
-                    dealerCards[1].CardOpen(7, 0, -0.1F);
+                    dealerCards[1].CardOpen(6, 0, -0.1F);
                     CountDealerPoint();
                     StartCoroutine(DealerDelayHit());
                 }
