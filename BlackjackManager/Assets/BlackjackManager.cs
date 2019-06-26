@@ -280,7 +280,7 @@ public class BlackjackManager : MonoBehaviour
             {
                 PlayerHit();
                 //玩家21點時自動停牌
-                if(playerCount==21)
+                if(playerCount==21 && playerCards.Count<5)
                 {
                     instruction = false;
                     dealerCards[1].CardOpen(6, 0, -0.1F);
